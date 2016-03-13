@@ -1,0 +1,19 @@
+#replicationGif{
+  text-align: center;
+}
+
+#getArticle{
+  text-align: center;
+}
+
+#readArticle{
+  text-align: center;
+}
+
+body {
+  background-color: antiquewhite;
+}
+
+textarea {
+  background-color: white;
+}

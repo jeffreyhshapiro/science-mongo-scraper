@@ -1,0 +1,19 @@
+{
+  "name": "scrapr",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "cheerio": "^0.20.0",
+    "express": "^4.13.4",
+    "mongoose": "^4.4.6",
+    "request": "^2.69.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
