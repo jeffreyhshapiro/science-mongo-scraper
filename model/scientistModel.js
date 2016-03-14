@@ -20,7 +20,7 @@ db.on('error', function(err) {
   console.log('Mongoose Error: ', err);
 });
 db.once('open', function() {
-  console.log('Mongoose connection successful.');
+  console.log('Mongoose connection successful for scientistArticles.');
 });
 
 var Article = mongoose.model('scienceArticles', articleSchema)

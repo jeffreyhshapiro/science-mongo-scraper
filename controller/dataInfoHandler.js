@@ -19,9 +19,9 @@ $(document).ready(function(){
         var description = $('<p>').append(data[i].description);
         var formTag = $('<form>').attr('method', 'POST').attr('action','/submitcomment');
         var divForForm = $('<div>').addClass('input-field col-s6');
-        var inputForForm = $('<input>').attr('placeholder','Comment here!').attr('type', 'text');
+        var inputForForm = $('<input>').attr('placeholder','Comment here!').attr('type', 'text').attr('name','scienceComment');
         var labelForForm = $('<label>').attr('for','Comment');
-        var submitButton = $('<button>').attr('type','submit').addClass('waves-effect waves-light btn').append('Submit');
+        var submitButton = $('<button>').attr('type','submit').addClass('waves-effect waves-light btn').attr('id','test').append('Submit');
         var commentField = $(formTag).append(divForForm).append(inputForForm).append(labelForForm).append(submitButton);
 
         $('#results').append(headlineComplete).append(data[i].description).append(commentField)
@@ -31,6 +31,9 @@ $(document).ready(function(){
         console.log(data[i].link);
 
       };
+      $("#test").on('click', function(){
+        alert('dafss')
+      })
     })
   });
 })

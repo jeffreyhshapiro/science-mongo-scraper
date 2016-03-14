@@ -2,9 +2,12 @@ var express = require('express');
 var app = express();
 var request = require('request');
 var cheerio = require('cheerio');
+var body-parser = require('body-parser')
 var PORT = 3000;
 var Article = require('./model/scientistModel.js')
+var Comment = require('./model/commentModel.js')
 
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.static('public'))
 app.use(express.static('controller'))
 
@@ -44,6 +47,18 @@ app.get('/', function(req, res){
 app.get('/articles', function(req, res){
   Article.find(function(err, result){
     res.send(result)
+  })
+})
+
+var articleComment = req.body
+
+app.post('/submitcomment', function(req, res){
+  var comment = new Comment ({
+    comment: articleComment
+  })
+  comment.save(function(err, comment){
+    if (err) {throw err};
+    res.json(comment);
   })
 })
 
