@@ -31,9 +31,6 @@ $(document).ready(function(){
         console.log(data[i].link);
 
       };
-      $("#test").on('click', function(){
-        alert('dafss')
-      })
-    })
+    });
   });
 })

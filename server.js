@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var request = require('request');
 var cheerio = require('cheerio');
-var body-parser = require('body-parser')
+var bodyParser = require('body-parser')
 var PORT = 3000;
 var Article = require('./model/scientistModel.js')
 var Comment = require('./model/commentModel.js')
@@ -50,15 +50,19 @@ app.get('/articles', function(req, res){
   })
 })
 
-var articleComment = req.body
-
 app.post('/submitcomment', function(req, res){
+  var articleComment = req.body.scienceComment
   var comment = new Comment ({
     comment: articleComment
   })
   comment.save(function(err, comment){
-    if (err) {throw err};
-    res.json(comment);
+    if (err) {
+      res.send(err)
+    } else {
+      
+      console.log("no error yet")
+
+    }
   })
 })
 

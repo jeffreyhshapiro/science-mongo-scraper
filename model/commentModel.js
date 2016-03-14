@@ -6,7 +6,7 @@ var commentSchema = new Schema({
     type: String
   },
   articleComment: {
-    type: String,
+    type: Schema.Types.ObjectId,
     ref: 'Article'
   }
 });
