@@ -57,6 +57,8 @@ app.get('/articles', function(req, res){
   })
 })
 
+
+//The comment feature is not yet done
 app.post('/submitcomment', function(req, res){
   var articleComment = req.body.scienceComment
   var comment = new Comment ({

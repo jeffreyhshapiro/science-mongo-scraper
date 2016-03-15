@@ -9,6 +9,7 @@ $(document).ready(function(){
   $("#getArticle").on("click", function(){
 
     counter++
+    
     $("#nextArticle").empty().show();
     $("#results").empty();
     $("#introMessage").remove();
