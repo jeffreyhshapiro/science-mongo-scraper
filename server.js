@@ -3,6 +3,7 @@ var app = express();
 var request = require('request');
 var cheerio = require('cheerio');
 var bodyParser = require('body-parser')
+var scrapeUrl = 'http://www.the-scientist.com/?articles.list/categoryNo/2884/category/Daily-News/'
 var PORT = 3000;
 var Article = require('./model/scientistModel.js')
 var Comment = require('./model/commentModel.js')
@@ -11,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.static('public'))
 app.use(express.static('controller'))
 
-request('http://www.the-scientist.com/?articles.list/categoryNo/2884/category/Daily-News/', function (error, response, html) {
+request(scrapeUrl, function (error, response, html) {
   if (!error && response.statusCode == 200) {
     $ = cheerio.load(html);
     $('div.articleHeader').each(function(i,element){
@@ -34,13 +35,13 @@ request('http://www.the-scientist.com/?articles.list/categoryNo/2884/category/Da
                 description: description,
                 link: 'http://www.the-scientist.com' + link
               })
-                articles.save(function(err, articles){
-                  if (err) {throw err};
-                  console.log(articles + " successfully added to database")
-                });
-              };
+              articles.save(function(err, articles){
+                if (err) {throw err};
+                console.log(articles + " successfully added to database")
+              });
             };
-          });
+          };
+        });
       };
     });
   };
@@ -65,9 +66,7 @@ app.post('/submitcomment', function(req, res){
     if (err) {
       res.send(err)
     } else {
-      
-      console.log("no error yet")
-
+      console.log('no error yet')
     }
   })
 })
