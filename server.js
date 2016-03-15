@@ -21,7 +21,7 @@ request(scrapeUrl, function (error, response, html) {
       var link = $(this).children('h4').children('a').attr('href');
 
       if (article && description && link) {
-        //If article title is already in the database, it will not be added
+        //If article title is already in the database, the document will not be added
         Article.find({}, 'article', function(err, result){
           for (var i = 0; i < result.length; i++) {
             if (article == result[i].article) {
@@ -29,7 +29,7 @@ request(scrapeUrl, function (error, response, html) {
               article.found = true;
               break;
             };
-            if (i == result.length - 1 && article.found !== true) {
+            if ((i == result.length - 1) && (article.found !== true)) {
               var articles = new Article ({
                 article: article,
                 description: description,
