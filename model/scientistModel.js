@@ -3,13 +3,16 @@ var Schema = mongoose.Schema;
 
 var articleSchema = new Schema({
   article: {
-    type: String
+    type: String,
+    trim: true
   },
   description: {
-    type: String
+    type: String,
+    trim: true
   },
   link: {
-    type: String
+    type: String,
+    trim: true
   }
 });
 

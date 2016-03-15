@@ -8,6 +8,7 @@ $(document).ready(function(){
 
     counter++
     $("#results").empty();
+    $("#introMessage").remove();
 
     $.getJSON('/articles', function(data){
       for (var i = 0; i < data.length; i++) {
