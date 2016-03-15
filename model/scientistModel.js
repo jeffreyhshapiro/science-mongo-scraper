@@ -14,9 +14,6 @@ var articleSchema = new Schema({
     type: String,
     trim: true
   }
-  comment: {
-    
-  }
 });
 
 mongoose.connect('mongodb://localhost/scientistArticles');
