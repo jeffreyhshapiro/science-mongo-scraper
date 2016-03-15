@@ -17,3 +17,7 @@
 body {
   background-color: antiquewhite;
 }
+
+#nextArticle {
+  text-align: right;
+}

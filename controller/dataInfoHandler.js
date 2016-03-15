@@ -4,9 +4,12 @@ $(document).ready(function(){
 
   var counter = -1;
 
+  $('#nextArticle').hide();
+
   $("#getArticle").on("click", function(){
 
     counter++
+    $("#nextArticle").empty().show();
     $("#results").empty();
     $("#introMessage").remove();
 
@@ -27,10 +30,7 @@ $(document).ready(function(){
         var commentField = $(formTag).append(divForForm).append(inputForForm).append(labelForForm).append(submitButton);
 
         $('#results').append(headlineComplete).append(description).append(commentField)
-
-        // console.log(data[i].article);
-        // console.log(data[i].description);
-        // console.log(data[i].link);
+        $("#nextArticle").append('Article ' + (counter + 1)  + ' of ' + data.length)
 
         if (counter == data.length - 1) {
           counter = -1
