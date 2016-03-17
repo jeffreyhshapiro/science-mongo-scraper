@@ -5,7 +5,7 @@ var commentSchema = new Schema({
   comment : {
     type: String
   },
-  articleComment: {
+  articleId: {
     type: Schema.Types.ObjectId,
     ref: 'Article'
   }

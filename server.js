@@ -65,22 +65,28 @@ app.get('/', function(req, res){
 app.get('/articles', function(req, res){
   Article.find(function(err, result){
     res.send(result)
-  })
-})
+  });
+});
 
+app.get('/getcomments', function(req, res){
+  Comment.find(function(err, result){
+    res.json(result);
+  });
+});
 
 //The comment feature is not yet done
 app.post('/submitcomment', function(req, res){
   var articleComment = req.body.scienceComment
+  var scienceArticleId = req.body.scienceArticleId
   var comment = new Comment ({
     comment: articleComment,
-    
+    articleId: scienceArticleId
   })
   comment.save(function(err, comment){
     if (err) {
       res.send(err)
     } else {
-      console.log('no error yet')
+      res.send(index.html)
     }
   })
 })
