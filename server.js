@@ -23,6 +23,17 @@ request(scrapeUrl, function (error, response, html) {
       if (article && description && link) {
         //If article title is already in the database, the document will not be added
         Article.find({}, 'article', function(err, result){
+          if (result.length == 0) {
+            var articles = new Article ({
+                article: article,
+                description: description,
+                link: 'http://www.the-scientist.com' + link
+              })
+              articles.save(function(err, articles){
+                if (err) {throw err};
+                console.log(articles + " successfully added to database")
+              });
+          };
           for (var i = 0; i < result.length; i++) {
             if (article == result[i].article) {
               console.log(article+ ' in database')
@@ -62,7 +73,8 @@ app.get('/articles', function(req, res){
 app.post('/submitcomment', function(req, res){
   var articleComment = req.body.scienceComment
   var comment = new Comment ({
-    comment: articleComment
+    comment: articleComment,
+    
   })
   comment.save(function(err, comment){
     if (err) {
